@@ -1,0 +1,25 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+    id 'java'
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+        "io.vertx:vertx-core:3.4.2",
+        "io.vertx:vertx-mysql-postgresql-client:3.4.2",
+        "org.slf4j:slf4j-log4j12:1.7.25"
+    )
+}
+
+task seed(type: JavaExec) {
+    main = 'test.Test'
+    classpath = sourceSets.main.runtimeClasspath
+}
