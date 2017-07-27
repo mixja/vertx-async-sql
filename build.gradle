@@ -13,13 +13,39 @@ repositories {
 
 dependencies {
     compile (
-        "io.vertx:vertx-core:3.4.2",
-        "io.vertx:vertx-mysql-postgresql-client:3.4.2",
-        "org.slf4j:slf4j-log4j12:1.7.25"
+            "io.vertx:vertx-core:3.4.2",
+            "io.vertx:vertx-mysql-postgresql-client:3.4.2",
+            "io.vertx:vertx-jdbc-client:3.4.2",
+            "org.slf4j:slf4j-log4j12:1.7.25",
+            "org.jooq:jooq:3.9.4",
+            "org.jooq:jooq-meta:3.9.4",
+            "org.jooq:jooq-codegen:3.9.4",
+            "org.flywaydb:flyway-core:4.2.0",
+            "org.postgresql:postgresql:42.1.3"
     )
 }
 
-task seed(type: JavaExec) {
-    main = 'test.Test'
+task async(type: JavaExec) {
+    main = 'test.TestAsync'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task jdbc(type: JavaExec) {
+    main = 'test.TestJdbc'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task jdbcAsync(type: JavaExec) {
+    main = 'test.TestJdbcAsync'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task generate(type: JavaExec) {
+    main = 'test.Generator'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task migrate(type: JavaExec) {
+    main = 'test.Migrate'
     classpath = sourceSets.main.runtimeClasspath
 }
